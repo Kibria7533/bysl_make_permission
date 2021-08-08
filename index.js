@@ -3,8 +3,48 @@ let p="[\"HRM\",\"HRM/Employee Metadata/Divisions/List\",\"HRM/Employee Metadata
 
 
 let spiited=p.split(':');
+let a=spiited[0].replace(/[[\]]/g,'').split(",").map(item=>item.replace(/\"/g,''));
+let b=spiited[1].replace(/[[\]]/g,'').split(",").map(item=>item.replace(/\"/g,''));
 console.log(spiited[0].replace(/[[\]]/g,'').split(",").map(item=>item.replace(/\"/g,'')));
 console.log(spiited[1].replace(/[[\]]/g,'').split(",").map(item=>item.replace(/\"/g,'')));
+
+
+let Storage=b.map(el=>{
+    let module={};
+    let checkable=[];
+    a.forEach((funcnality,index)=>{
+        if(index==0){
+            module.name=el;//module={name:'HRM'}
+        
+        }
+        else{
+            let sp=funcnality.split('/');//'HRM/Employee Metadata/Divisions/List','HRM/Employee Metadata/Divisions/Add',
+            let state=sp.length;
+            // sp.forEach((it,index)=>{//'HRM,Employee Metadata,Divisions,List',
+            //     if(index==sp.length-1){
+            //         state.push({it:true})
+            //     }
+            //     else{
+            //         state[it]={};
+            //     }
+            // })  
+            
+            while(state--){
+                if(state==sp.length-1){
+                    sp[state]=[];
+                    module['funcnality']=sp[state].push(sp[sp.length])
+                }
+                else{
+                    
+                }
+            }
+        }
+       
+    })
+})
+
+
+
 
 
 
